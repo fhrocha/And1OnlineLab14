@@ -7,9 +7,10 @@
 
     <CheckBox
         android:id="@+id/checkBoxTask"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="false"
-        android:text="CheckBox" />
+        android:text="CheckBox"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </LinearLayout>

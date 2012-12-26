@@ -62,13 +62,13 @@ public class NewTaskActivity extends Activity {
 	private boolean isTaskNameValid() {
 		
 		String taskName = ((TextView)findViewById(R.id.editTextName)).getText().toString();
-		return !(taskName.isEmpty() || taskName.trim().length() == 0);
+		return !(taskName.trim().length() == 0);
 	}
 	
 	private boolean isTaskDescriptionValid() {
 		
 		String taskDescription = ((TextView)findViewById(R.id.editTextDescription)).getText().toString();
-		return !(taskDescription.isEmpty() || taskDescription.trim().length() == 0);
+		return !(taskDescription.trim().length() == 0);
 	}
 	
 	@Override

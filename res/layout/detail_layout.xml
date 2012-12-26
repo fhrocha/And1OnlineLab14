@@ -24,11 +24,11 @@
 
     <CheckBox
         android:id="@+id/checkBoxFinished"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:padding="10dp"
-        android:text="Concluída" />
+        android:text="Concluída"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,12 +40,14 @@
             android:id="@+id/buttonConclude"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Concluir" />
 
         <Button
             android:id="@+id/buttonDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Excluir" />
     </LinearLayout>
 

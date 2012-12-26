@@ -3,5 +3,6 @@
 
     <string name="app_name">And1OnlineLab14</string>
     <string name="menu_settings">Settings</string>
+    <string name="menu_exit">Exit</string>
 
 </resources>

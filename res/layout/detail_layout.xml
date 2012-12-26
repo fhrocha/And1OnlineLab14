@@ -8,8 +8,8 @@
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -17,8 +17,8 @@
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:padding="5dp"
+        android:layout_margin="10dp"
+        android:padding="10dp"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
 

@@ -9,18 +9,22 @@
         android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
         android:hint="Tarefa"
-        android:ems="10" >
+        android:padding="10dp" >
 
         <requestFocus />
     </EditText>
-    
-	<EditText
+
+    <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:ems="10"
         android:hint="Descrição"
-        android:ems="10" />
+        android:padding="10dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,15 +32,13 @@
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-	    <Button
-	        android:id="@+id/buttonSave"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:layout_margin="10dp"
-	        android:gravity="center_vertical"
-	        android:padding="10dp"
-	        android:text="Salvar" />
-
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:text="Salvar" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,52 +1,78 @@
 package br.com.globalcode.android;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public class SharedPrefsActivity extends Activity implements OnClickListener {
 
-	EditText sharedData;
-	TextView dataResults;
-	public final static String FILE_NAME = "MySharedString";
-	SharedPreferences someData;
+	private EditText editTextEmail;
+	private EditText editTextName;
+	public final static String FILE_NAME = "MyPreferences";
+	private SharedPreferences myPreferences;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.shared_prefs_layout);
-		setupVariables();
-		someData = getSharedPreferences(FILE_NAME, 0);
+		
+		bindValues();
+		
+		myPreferences = getSharedPreferences(FILE_NAME, 0);
+		
+		loadSavedPrefs();
 	}
 
-	private void setupVariables() {
-		Button save = (Button) findViewById(R.id.bSave);
-		Button load = (Button) findViewById(R.id.bLoad);
-		dataResults = (TextView) findViewById(R.id.tvLoadYourData);
-		sharedData = (EditText) findViewById(R.id.etSharedData);
-		save.setOnClickListener(this);
-		load.setOnClickListener(this);
+	private void bindValues() {
+		
+		Button buttonSave = (Button) findViewById(R.id.buttonSave);
+		editTextEmail = (EditText) findViewById(R.id.editTextEmail);
+		editTextName = (EditText) findViewById(R.id.editTextName);
+		
+		buttonSave.setOnClickListener(this);
+	}
+	
+	private void loadSavedPrefs() {
+		
+		if(myPreferences != null) {
+			
+			editTextEmail.setText(myPreferences.getString("email", ""));
+			editTextName.setText(myPreferences.getString("name", ""));
+		}
 	}
 
 	public void onClick(View v) {
+		
 		switch (v.getId()) {
-		case R.id.bSave:
-			String stringData = sharedData.getText().toString();
-			SharedPreferences.Editor editor = someData.edit();
-			editor.putString("sharedString", stringData);
+		
+		case R.id.buttonSave:
+			
+			String eMail = editTextEmail.getText().toString();
+			String name = editTextName.getText().toString();
+			
+			SharedPreferences.Editor editor = myPreferences.edit();
+			editor.putString("email", eMail);
+			editor.putString("name", name);
 			editor.commit();
-			break;
-		case R.id.bLoad:
-			someData = getSharedPreferences(FILE_NAME, 0);
-			String dataReturned = someData.getString("sharedString",
-					"Couldn't Load Data");
-			dataResults.setText(dataReturned);
+			showAlertSavedOk();
 			break;
 		}
 	}
+	
+	private void showAlertSavedOk() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Aviso");
+		builder.setMessage("Preferências salvas.");
+		builder.setPositiveButton("Ok", null);
+		builder.create();
+		builder.show();
+	}
+
 }

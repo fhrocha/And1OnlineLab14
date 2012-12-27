@@ -56,13 +56,25 @@ public class SharedPrefsActivity extends Activity implements OnClickListener {
 			String eMail = editTextEmail.getText().toString();
 			String name = editTextName.getText().toString();
 			
-			SharedPreferences.Editor editor = myPreferences.edit();
-			editor.putString("email", eMail);
-			editor.putString("name", name);
-			editor.commit();
-			showAlertSavedOk();
+			if(isEmailValid(eMail)) {
+				
+				savePrefs(eMail, name);
+				showAlertSavedOk();
+			} else {
+				
+				showAlertInvalidEmail();
+			}			
+
 			break;
 		}
+	}
+
+	private void savePrefs(String eMail, String name) {
+		
+		SharedPreferences.Editor editor = myPreferences.edit();
+		editor.putString("email", eMail);
+		editor.putString("name", name);
+		editor.commit();
 	}
 	
 	private void showAlertSavedOk() {
@@ -73,6 +85,22 @@ public class SharedPrefsActivity extends Activity implements OnClickListener {
 		builder.setPositiveButton("Ok", null);
 		builder.create();
 		builder.show();
+	}
+	
+	private void showAlertInvalidEmail() {
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Aviso");
+		builder.setMessage("Email Inválido.");
+		builder.setPositiveButton("Ok", null);
+		builder.create();
+		builder.show();
+	}
+	
+	private boolean isEmailValid(String eMail) {
+		
+		return eMail.trim().length() > 0 
+					&& android.util.Patterns.EMAIL_ADDRESS.matcher(eMail).matches();
 	}
 
 }
